@@ -16,16 +16,18 @@ namespace AdventOfCode
         {
 
             Console.WriteLine("Reading File: ");
-            //string[] a = (string[])File.ReadAllLines("C:\\Users\\avetaash\\source\\repos\\AdventOfCode2024\\text.txt");
             string[] a = (string[])File.ReadAllLines(Directory.GetCurrentDirectory() + "\\..\\..\\..\\text.txt");
             Console.WriteLine("Total lines: " + a.Length);
+
             List<string> all = new List<string>();
+            
             foreach (string s in a)
             {
                 all.AddRange(Parsestring(s));
             }
+            
+            //ganger og summerer
             int sum = 0;
-
             foreach (string s in all)
             {
                 MatchCollection m = Regex.Matches(s, @"\d+");
@@ -33,11 +35,10 @@ namespace AdventOfCode
             }
 
             Console.WriteLine("Totalsum: " + sum);
-
+            
+            //Part2-----------------------------------------------------------------------------------------
             List<string> all2 = new List<string>();
             
-            
-            //Part2
             //Monterer alle linjer til en sammenhengdende streng
             string newstring = "";
             foreach (string s in a)
@@ -72,7 +73,8 @@ namespace AdventOfCode
                 }
             }
             int sum2 = 0;
-
+            
+            //ganger og summerer alle tall
             foreach (string s in all2)
             {
                 MatchCollection m = Regex.Matches(s, @"\d+");
