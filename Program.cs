@@ -19,11 +19,13 @@ namespace AdventOfCode
             string[] a = (string[])File.ReadAllLines(Directory.GetCurrentDirectory() + "\\..\\..\\..\\text.txt");
             Console.WriteLine("Total lines: " + a.Length);
             char[,] grid = new char[140, 140];
-            Console.WriteLine(grid[0,1]);
+            Console.WriteLine(grid[0, 1]);
             int line = 0;
-            foreach (string s in a) {
-                
-                for (int col = 0; col < 140; col++) {
+            foreach (string s in a)
+            {
+
+                for (int col = 0; col < 140; col++)
+                {
                     grid[line, col] = s[col];
                 }
                 line++;
@@ -91,9 +93,9 @@ namespace AdventOfCode
                 try
                 {
                     if (
-                            grid[rom , col + 1] == 'M' &&
-                            grid[rom , col + 2] == 'A' &&
-                            grid[rom , col + 3] == 'S') return 1;
+                            grid[rom, col + 1] == 'M' &&
+                            grid[rom, col + 2] == 'A' &&
+                            grid[rom, col + 3] == 'S') return 1;
 
                     return 0;
 
@@ -119,9 +121,9 @@ namespace AdventOfCode
                 try
                 {
                     if (
-                            grid[rom-1, col + 1] == 'M' &&
-                            grid[rom-2, col + 2] == 'A' &&
-                            grid[rom-3, col + 3] == 'S') return 1;
+                            grid[rom - 1, col + 1] == 'M' &&
+                            grid[rom - 2, col + 2] == 'A' &&
+                            grid[rom - 3, col + 3] == 'S') return 1;
 
                     return 0;
 
@@ -178,7 +180,7 @@ namespace AdventOfCode
 
                 for (int row = 0; row < grid.GetLength(0); row++)
                 {
-                    for (int col= 0; col < grid.GetLength(0); col++)
+                    for (int col = 0; col < grid.GetLength(0); col++)
                     {
                         if (grid[row, col] != 'A') continue;
                         count += CheckforStar(grid, row, col);
@@ -187,17 +189,20 @@ namespace AdventOfCode
                 return count;
             }
 
-            static int CheckforStar(char[,] grid, int row, int col) {
-                try {
-                    if (((grid[row - 1, col-1] == 'M' && grid[row + 1, col+1] == 'S') || (grid[row - 1, col - 1] == 'S' && grid[row + 1, col + 1] == 'M')) &&
+            static int CheckforStar(char[,] grid, int row, int col)
+            {
+                try
+                {
+                    if (((grid[row - 1, col - 1] == 'M' && grid[row + 1, col + 1] == 'S') || (grid[row - 1, col - 1] == 'S' && grid[row + 1, col + 1] == 'M')) &&
                     ((grid[row - 1, col + 1] == 'M' && grid[row + 1, col - 1] == 'S') || (grid[row - 1, col + 1] == 'S' && grid[row + 1, col - 1] == 'M')))
                         return 1;
                     return 0;
 
-                } catch { return 0; }
+                }
+                catch { return 0; }
             }
 
-            
+
         }
 
     }
